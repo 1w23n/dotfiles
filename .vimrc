@@ -18,3 +18,10 @@ set scrolloff=5
 set noswapfile
 set nowritebackup
 set nobackup
+
+inoremap { {}<LEFT>
+inoremap [ []<LEFT>
+inoremap ( ()<LEFT>
+inoremap < <><LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
