@@ -1,14 +1,20 @@
-" Configuration file for vim
-set modelines=0		" CVE-2007-2438
+colorscheme koehler
 
-" Normally we use vim-extensions. If you want true vi-compatibility
-" remove change the following statements
-set backspace=2		" more powerful backspacing
+set display=lastline
 
-" Don't write backup file if vim is being called by "crontab -e"
-au BufWrite /private/tmp/crontab.* set nowritebackup
-" Don't write backup file if vim is being called by "chpass"
-au BufWrite /private/etc/pw.* set nowritebackup
+set number
+set ruler
 
-colorscheme railscasts
+set matchtime=1
+set showmatch
+set cursorline
+
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
 syntax on
+set scrolloff=5
+set noswapfile
+set nowritebackup
+set nobackup
