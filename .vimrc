@@ -7,7 +7,7 @@ set ruler
 
 set matchtime=1
 set showmatch
-set cursorline
+"set cursorline
 
 set tabstop=2
 set shiftwidth=2
