@@ -1,4 +1,4 @@
-PATH=$HOME/.pyenv/shims:$HOME/.rbenv/shims:$HOMW/.rbenv/versions/2.0.0-p645/bin:$HOME/.rbenv/versions/2.2.2/bin:/Applications/Sublime\ Text\ 2/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/:$PATH
+PATH=$HOME/.pyenv/shims:$HOME/.rbenv/shims:$HOMW/.rbenv/versions/2.0.0-p645/bin:$HOME/.rbenv/versions/2.2.2/bin:$PATH
 
 # History file and size
 HISTFILE=$HOME/.zsh_history
@@ -75,14 +75,18 @@ zstyle ':completion:*' group-name ''
 HISTFILE=$HOME/.zsh_history
 
 function peco_select_history() {
-  local tac
-  (which gtac &> /dev/null && tac="gtac") || \
-    (which tac &> /dev/null && tac="tac") || \
-    tac="tail -r"
-  BUFFER=$(fc -l -n 1 | eval $tac | \
-    peco --layout=bottom-up --query "$LBUFFER")
-  CURSOR=$#BUFFER
-  zle -R -c
+local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+
+    BUFFER=$(\history -n 1 | \
+        eval $tac | \
+        peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
 }
 zle -N peco_select_history
 bindkey '^r' peco_select_history
